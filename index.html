@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Ninja Hackathon 2025</title>
+    <style>
+      :root {
+        --primary-100: #0d6e6e;
+        --primary-200: #4a9d9c;
+        --primary-300: #afffff;
+        --accent-100: #ff3d3d;
+        --accent-200: #ffe0c8;
+        --text-100: #ffffff;
+        --text-200: #e0e0e0;
+        --bg-100: #0d1f2d;
+        --bg-200: #1d2e3d;
+        --bg-300: #354656;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lucida Sans", sans-serif;
+        background: var(--bg-100);
+        color: var(--text-100);
+        scroll-behavior: smooth;
+      }
+
+      header {
+        height: 60vh;
+        background: url("https://images.unsplash.com/photo-1522199710521-72d69614c702")
+          center/cover fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: -1;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(13, 30, 45, 0.6);
+      }
+
+      header h1 {
+        position: relative;
+        font-size: 3rem;
+        color: var(--accent-200);
+        animation: fadeIn 1.8s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container {
+        max-width: 900px;
+        margin: -80px auto 40px;
+        padding: 0 20px;
+      }
+
+      section {
+        background: var(--bg-200);
+        border-radius: 10px;
+        margin-bottom: 30px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(20px);
+        opacity: 0;
+        animation: slideUp 0.8s forwards; /* this made the section to slide down while page loads  */
+        color: var(--text-200);
+      }
+
+      /* this made the section to slide down while page loads  */
+      /* this decides that what secs each section should take to give slide down effect */
+      section:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      section:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+      section:nth-child(4) {
+        animation-delay: 0.7s;
+      }
+      section:nth-child(5) {
+        animation-delay: 0.9s;
+      }
+
+      @keyframes slideUp {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        color: var(--primary-300);
+        margin-bottom: 15px;
+        border-left: 5px solid var(--accent-100);
+        padding-left: 12px;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-100),
+          var(--primary-300)
+        );
+        margin-top: 5px;
+        border-radius: 2px;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .event-image {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .event-image img {
+        max-width: 100%;
+        width: 450px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .event-image img:hover {
+        transform: scale(1.03);
+      }
+
+      iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 8px;
+        margin-top: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      iframe:hover {
+        transform: translateY(-5px);
+      }
+
+      form {
+        display: grid;
+        gap: 20px;
+      }
+
+      form input[type="text"],
+      form input[type="email"] {
+        padding: 14px 16px;
+        border: 1px solid var(--primary-200);
+        border-radius: 6px;
+        font-size: 1rem;
+        background: var(--bg-300);
+        color: var(--text-100);
+        width: 100%;
+        caret-color: var(--accent-100);
+        margin-top: 10px;
+      }
+
+      form input:focus {
+        border-color: var(--accent-100);
+        outline: none;
+        box-shadow: 0 0 5px var(--accent-100);
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+      }
+
+      form input[type="submit"] {
+        background: linear-gradient(
+          90deg,
+          var(--primary-200),
+          var(--primary-300)
+        );
+        color: var(--primary-100);
+        padding: 15px;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      form input[type="submit"]:hover {
+        background: var(--accent-100);
+        color: var(--text-100);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 61, 61, 0.4);
+      }
+
+      form input::placeholder {
+        color: #afffff5e;
+        font-size: small;
+        font-weight: 100;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: var(--text-200);
+        font-size: 0.9rem;
+        background: var(--bg-300);
+      }
+
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Coding Ninja Hackathon 2025</h1>
+    </header>
+
+    <div class="container">
+      <div class="event-image">
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60"
+          alt="Developers collaborating"
+        />
+      </div>
+
+      <section>
+        <h2>📅 Event Details</h2>
+        <p>
+          <strong>Date:</strong> 14th March 2025 &nbsp; | &nbsp;<strong
+            >Time:</strong
+          >
+          10 AM–5 PM
+        </p>
+        <p>
+          <strong>Venue:</strong> Unit 007‑008, GF, Tower‑A, Unitech Cyber Park,
+          Sector 39, Gurugram, Haryana
+        </p>
+      </section>
+
+      <section>
+        <h2>💡 Why Attend?</h2>
+        <ul>
+          <li>🔹 Algorithm & debugging challenges</li>
+          <li>🔹 Hackathon sprint & team networking</li>
+          <li>🔹 Win prizes, internships, and swag</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>📜 Event Rules</h2>
+        <ul>
+          <li>🔹 Registration: mandatory</li>
+          <li>🔹 Open to students & professionals</li>
+          <li>🔹 Rounds: Algorithm → Debugging → Sprint</li>
+          <li>🔹 Fair play & integrity required</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>🎬 Glimpses</h2>
+        <p>Check out moments from past editions:</p>
+        <iframe
+          src="https://www.youtube.com/embed/pKd0Rpw7O48"
+          allowfullscreen
+        ></iframe>
+      </section>
+
+      <section>
+        <h2>📍 Location</h2>
+        <p>Find us here:</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112084.21429212097!2d76.95681341769814!3d28.45349855237654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e2cc3f1b95%3A0xd171e54ad9296de4!2sUnitech%20Cyber%20Park!5e0!3m2!1sen!2sin!4v1655743978296!5m2!1sen!2sin"
+        ></iframe>
+      </section>
+
+      <section>
+        <h2>✅ RSVP Now</h2>
+        <form action="thankyoupage.html">
+          <label
+            >Name:<input type="text" name="name" placeholder="Your Name..."
+          /></label>
+          <label
+            >Email:<input
+              type="email"
+              name="email"
+              placeholder="Email address..."
+              required
+          /></label>
+          <label>Will you attend?</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="attend" value="yes" required />
+              Yes</label
+            >
+            <label
+              ><input type="radio" name="attend" value="no" required />
+              No</label
+            >
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+
+      <p style="text-align: center; margin-top: 20px">
+        For queries email <strong>event@codingninjas.com</strong>
+      </p>
+    </div>
+
+    <footer>© 2025 Coding Ninja Hackathon. All Rights Reserved.</footer>
+  </body>
+</html>
